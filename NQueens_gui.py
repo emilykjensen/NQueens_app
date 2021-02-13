@@ -33,6 +33,9 @@ window.title("N Queens")
 
 # Left side of the window - board
 frm_board = tk.Frame(master=window)
+frm_board.columnconfigure([i for i in range(n)], minsize=100)
+frm_board.rowconfigure([i for i in range(n)], minsize=100)
+
 # i -> current row
 for i in range(n):
     # j -> current column
@@ -41,14 +44,14 @@ for i in range(n):
             master=frm_board,
             borderwidth=1,
             padx = 1,
-            pady = 1
+            pady = 1,
         )
         btn.grid(row=i, column=j)
         if pos_list[j] == i:
-            label = tk.Label(master=btn, text="Q")
+            label = tk.Label(master=btn, text="Q", bg = "red")
         else:
-            label = tk.Label(master=btn, text=" ")
-        label.pack()
+            label = tk.Label(master=btn, text=" ", bg = "red")
+        label.grid(row=0, column=0, sticky="nsew")
 
 # Right side of the window - information
 frm_info = tk.Frame(master=window)

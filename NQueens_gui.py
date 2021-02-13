@@ -4,7 +4,9 @@ import tkinter as tk
 
 n = 4
 
-pos_list = [0] * n
+pos_list = [0] * n # initializes all queens to the top row
+
+
 #%% Define functions
 
 def count_conflicts():
@@ -27,10 +29,21 @@ def count_conflicts():
 window = tk.Tk()
 window.title("N Queens")
 
+# Left side of the window - board
 frm_board = tk.Frame(master=window)
-lbl_board = tk.Label(master=frm_board, text="Board Label")
-lbl_board.pack()
+for i in range(n):
+    for j in range(n):
+        btn = tk.Button(
+            master=frm_board,
+            borderwidth=1,
+            padx = 1,
+            pady = 1
+        )
+        btn.grid(row=i, column=j)
+        label = tk.Label(master=btn, text=f"Row {i}\nColumn {j}")
+        label.pack()
 
+# Right side of the window - information
 frm_info = tk.Frame(master=window)
 lbl_conflicts = tk.Label(master=frm_info, text="Current Conflicts: not calculated")
 lbl_instr = tk.Label(master=frm_info, text="Click a square to move the column's queen there")
@@ -39,7 +52,9 @@ lbl_conflicts.pack()
 lbl_instr.pack()
 btn_recalc.pack()
 
+# Add it to the window
 frm_board.grid(row=0, column=0, sticky="ew")
 frm_info.grid(row=0, column=1, sticky="ew")
 
+# Run the app
 window.mainloop()

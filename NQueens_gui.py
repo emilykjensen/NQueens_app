@@ -4,7 +4,9 @@ import tkinter as tk
 
 n = 4
 
-pos_list = [0] * n # initializes all queens to the top row
+# initialize all queens to the top row
+# pos_list[j] -> row value for queen in column i
+pos_list = [0] * n 
 
 
 #%% Define functions
@@ -31,7 +33,9 @@ window.title("N Queens")
 
 # Left side of the window - board
 frm_board = tk.Frame(master=window)
+# i -> current row
 for i in range(n):
+    # j -> current column
     for j in range(n):
         btn = tk.Button(
             master=frm_board,
@@ -40,7 +44,10 @@ for i in range(n):
             pady = 1
         )
         btn.grid(row=i, column=j)
-        label = tk.Label(master=btn, text=f"Row {i}\nColumn {j}")
+        if pos_list[j] == i:
+            label = tk.Label(master=btn, text="Q")
+        else:
+            label = tk.Label(master=btn, text=" ")
         label.pack()
 
 # Right side of the window - information

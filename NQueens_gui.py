@@ -23,7 +23,7 @@ def count_conflicts():
             if pos_list[i] == pos_list[j]:
                 row_conflicts += 1
                 
-    lbl_conflicts.config(text = "Current Conflicts: {}".format(row_conflicts + diag_conflicts))
+    lbl_conflicts.config(text =f"Current Conflicts: {row_conflicts + diag_conflicts}")
 
 #%% Make the window
 window = tk.Tk()
